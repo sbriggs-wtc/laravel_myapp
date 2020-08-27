@@ -1,3 +1,12 @@
+## What you will need to run this program:
+- Docker. Download for Windows: https://hub.docker.com/editions/community/docker-ce-desktop-windows/
+
+Steps to setup this application:
+1) Clone this repository to your local computer.
+2) run 'sh RunSetup.sh' in the terminal from the root directory.
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
