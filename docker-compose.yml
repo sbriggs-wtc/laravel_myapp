@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+  mariadb:
+    image: 'docker.io/bitnami/mariadb:10.1-debian-10'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=my_user
+      - MARIADB_DATABASE=my_database
+      - MARIADB_PASSWORD=my_password
+
+  myapp:
+    tty: true
+    image: bitnami_laravel_custom
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=my_user
+      - DB_DATABASE=my_database
+      - DB_PASSWORD=my_password
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+# privileged: true # Privileged mode could be required to run this container under Windows
+
+# docker-compose exec myapp php artisan list
+# docker-compose exec myapp bash
+# cat /etc/*-release
+# sudo apt-get update (super user do)
+# sudo apt-get install vim
+# composer global require laravel/installer
+
+# For Laravel >= 6: (as replacement for make:auth. generates auth, and layouts folders etc)
+# composer require laravel/ui
+# php artisan ui vue --auth
+# php artisan migrate
+# npm install && npm run dev?
+
+# npm install
+# npm run dev (will compile everything that laravel ships with and compile it into a file that can be used using web pack (javascript bundler). compiled files end up in the public directory)
+
+# migrations are files that describe your database (migration is a file that holds all the instructions that is needed for a database to create itself)
+
+# com.docker.backend ->
+
+# find . -name "*.php"
+
+# /etc/bash.bashrc
+# echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
+# export PATH="$PATH:$HOME/.composer/vendor/bin" 
+# echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> /etc/bash.bashrc
+# sudo echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
